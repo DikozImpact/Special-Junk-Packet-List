@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Junk Packet List</title>
+    <link rel="icon" type="image/png" href="../icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .site-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .site-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+        }
+
+        .title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+            font-size: 1rem;
+            padding: 0 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .image-container img {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .input-label {
+            min-width: 40px;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .input-field {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            outline: none;
+            min-width: 200px;
+        }
+
+        .copy-btn {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .refresh-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1;
+            min-width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 70px 15px 30px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 25px;
+            }
+            
+            .image-container img {
+                max-width: 220px;
+            }
+            
+            .input-section {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+            
+            .input-group {
+                padding: 10px 12px;
+                margin-bottom: 12px;
+            }
+            
+            .input-field {
+                min-width: 150px;
+                font-size: 0.9rem;
+            }
+            
+            .site-btn {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+                top: 15px;
+                right: 15px;
+            }
+            
+            .footer-btn {
+                min-width: 140px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 65px 10px 25px;
+            }
+            
+            .title {
+                font-size: 1.6rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .image-container img {
+                max-width: 180px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .input-field {
+                min-width: 100%;
+                width: 100%;
+            }
+            
+            .copy-btn {
+                align-self: flex-end;
+            }
+            
+            .footer-buttons {
+                flex-direction: column;
+            }
+            
+            .footer-btn {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://voidwaifu.github.io/VoidWaifu/" target="_blank" class="site-btn">Мой сайт</a>
+
+    <div class="container">
+        <h1 class="title">Special junk packet list</h1>
+        <p class="subtitle">Эта страница для заполнения полей special junk packet для amneziaVPN wg 1.5</p>
+
+        <div class="image-container">
+            <img src="SpecialJunkPacket.jpg" alt="Special Junk Packet">
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <div class="input-label">I1</div>
+                <input type="text" class="input-field" id="i1" readonly>
+                <button class="copy-btn" data-target="i1">Копировать</button>
+            </div>
+            <div class="input-group">
+                <div class="input-label">I2</div>
+                <input type="text" class="input-field" id="i2" readonly>
+                <button class="copy-btn" data-target="i2">Копировать</button>
+            </div>
+            <div class="input-group">
+                <div class="input-label">I3</div>
+                <input type="text" class="input-field" id="i3" readonly>
+                <button class="copy-btn" data-target="i3">Копировать</button>
+            </div>
+            <div class="input-group">
+                <div class="input-label">I4</div>
+                <input type="text" class="input-field" id="i4" readonly>
+                <button class="copy-btn" data-target="i4">Копировать</button>
+            </div>
+            <div class="input-group">
+                <div class="input-label">I5</div>
+                <input type="text" class="input-field" id="i5" readonly>
+                <button class="copy-btn" data-target="i5">Копировать</button>
+            </div>
+        </div>
+
+        <button class="refresh-btn" id="refreshBtn">Получить новые значения</button>
+
+        <div class="footer-buttons">
+            <a href="https://amnezia.org/" target="_blank" class="footer-btn">Amnezia.org</a>
+            <a href="https://amnezia.org/downloads" target="_blank" class="footer-btn">Скачать AmneziaVPN</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRandomValues();
+            
+            document.getElementById('refreshBtn').addEventListener('click', loadRandomValues);
+            
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const inputField = document.getElementById(targetId);
+                    const fullValue = inputField.getAttribute('data-full-value');
+                    
+                    navigator.clipboard.writeText(fullValue).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'Скопировано!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    });
+                });
+            });
+        });
+
+        async function loadRandomValues() {
+            const randomFileIndex = Math.floor(Math.random() * 5) + 1;
+            const fileName = `I-list${randomFileIndex}.json`;
+            
+            try {
+                const response = await fetch(fileName);
+                const data = await response.json();
+                
+                const shuffled = [...data].sort(() => 0.5 - Math.random());
+                const selectedItems = shuffled.slice(0, 5);
+                
+                for (let i = 0; i < 5; i++) {
+                    const inputField = document.getElementById(`i${i+1}`);
+                    if (selectedItems[i]) {
+                        const fullValue = selectedItems[i].I;
+                        const displayValue = fullValue.substring(0, 20) + '...';
+                        
+                        inputField.value = displayValue;
+                        inputField.setAttribute('data-full-value', fullValue);
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
+    </script>
+</body>
+</html>
