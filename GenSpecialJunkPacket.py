@@ -66,7 +66,7 @@ class WireGuardPacketTester:
         return packets
 
     def _create_dns_packet(self):
-        domains = ["google.com", "yandex.ru", "github.com", "apple.com"]
+        domains = ["ozon.ru"]
         domain = random.choice(domains)
         
         transaction_id = secrets.token_bytes(2)
