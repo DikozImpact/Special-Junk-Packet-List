@@ -55,11 +55,11 @@ class WireGuardPacketTester:
     def generate_packets(self):
         packets = []
         
-        for i in range(2500):
+        for i in range(100):
             dns_packet = self._create_dns_packet()
             packets.append((dns_packet, f"DNS_{i}"))
         
-        for i in range(2500):
+        for i in range(100):
             sip_packet = self._create_sip_packet()
             packets.append((sip_packet, f"SIP_{i}"))
             
